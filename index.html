@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Therpol: recycled plastic that stretches, not snaps</title>
+<meta name="description" content="Therpol is a patented natural-rubber-based additive that helps restore impact strength and elongation in recycled and mixed plastics.">
+<meta name="theme-color" content="#0e1013">
+<link rel="preload" href="fonts/archivo-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/therpol.css">
+</head>
+<body>
+<div class="track" id="track">
+  <div class="stage" id="stage">
+    <canvas id="gl" aria-label="Real-time simulation of a tensile test on a recycled plastic bar"></canvas>
+    <div class="vig"></div>
+    <div class="ld" id="ld">CALIBRATING LOAD CELL…</div>
+
+    <div class="ui">
+      <div class="top gut">
+        <div class="mark"><b>Therpol</b><small>by RAI Global Distribution</small></div>
+        <nav class="nav" aria-label="Site"><span>Technology</span><span>Applications</span><span>Data sheets</span><span>Trials</span><span>Partners</span><button class="btn f cta" type="button">Request a sample</button></nav>
+        <div class="burger" aria-hidden="true"></div>
+      </div>
+
+      <div class="copy" id="copy">
+        <section class="chp" data-a="0" data-b=".07">
+          <div class="eye fd">Patented natural-rubber-based additive</div>
+          <h2><span class="ln"><span>Recycled plastic</span></span><span class="ln"><span>that stretches,</span></span><span class="ln"><span class="g">not snaps.</span></span></h2>
+          <p class="fd">Therpol helps restore impact strength and elongation in recycled and mixed plastics. Scroll to run the test: your scroll is the testing machine.</p>
+          <div class="ctas fd"><button class="btn f cta" type="button">Request a sample</button><button class="btn cta" type="button">Get the data sheet</button></div>
+        </section>
+        <section class="chp" data-a=".07" data-b=".245">
+          <div class="eye fd">01 · The problem</div>
+          <h2><span class="ln"><span>Recycled plastic,</span></span><span class="ln"><span class="g">under load.</span></span></h2>
+          <p class="fd">A bar of recycled plastic without Therpol, pulled at a constant rate. Watch the stress climb.</p>
+        </section>
+        <section class="chp" data-a=".245" data-b=".33">
+          <div class="eye fd">01 · The problem</div>
+          <h2><span class="ln"><span>Without Therpol,</span></span><span class="ln"><span class="g">it snaps.</span></span></h2>
+          <p class="fd">Brittle plastic gives little warning: fine crazes, then fracture, with almost no stretch. It is one reason so much recycled plastic is downcycled.</p>
+        </section>
+        <section class="chp" data-a=".33" data-b=".47">
+          <div class="eye fd">02 · The mix</div>
+          <h2><span class="ln"><span>Same recycled base.</span></span><span class="ln"><span class="a">Add Therpol.</span></span></h2>
+          <p class="fd">A patented, natural-rubber-based additive, compounded into the same recycled plastic. Same bar, same test.</p>
+        </section>
+        <section class="chp" data-a=".47" data-b=".60">
+          <div class="eye fd">03 · With Therpol</div>
+          <h2><span class="ln"><span>It yields</span></span><span class="ln"><span class="a">instead of breaking.</span></span></h2>
+          <p class="fd">Past its peak load the bar gives way gradually: a neck forms in the middle, and the material starts to draw.</p>
+        </section>
+        <section class="chp" data-a=".60" data-b=".80">
+          <div class="eye fd">03 · With Therpol</div>
+          <h2><span class="ln"><span>With Therpol,</span></span><span class="ln"><span class="a">it stretches.</span></span></h2>
+          <p class="fd">The neck travels along the bar and the plastic keeps drawing, long after the untreated bar broke. The live site plots Therpol's validated figures here.</p>
+        </section>
+        <section class="chp" data-a=".80" data-b=".885">
+          <div class="eye fd">04 · The difference</div>
+          <h2><span class="ln"><span>Same base.</span></span><span class="ln"><span class="a">One additive.</span></span></h2>
+          <p class="fd">The area under each curve is the energy the material absorbs before it fails: its toughness. Tougher recycled plastic can go back into products that ask more of it.</p>
+        </section>
+      </div>
+
+      <div class="hint" id="hint">SCROLL TO RUN THE TEST<i></i></div>
+
+      <div class="chart" id="chart">
+        <div class="ch-h"><span>Stress – strain</span><span class="sim">Simulation</span></div>
+        <canvas id="cv" aria-label="Stress strain plot drawn live from the simulation"></canvas>
+        <div class="ch-f"><span class="k">Without Therpol</span><span class="k a">With Therpol</span><span class="st" id="cst">Specimen clamped</span></div>
+      </div>
+
+      <div class="inst" id="inst">
+        <div class="t" id="itest">TEST 01 · WITHOUT THERPOL</div>
+        <div class="s" id="istate">Specimen clamped · zero load</div>
+        <div class="mt"><span>LOAD</span><i><b id="mload"></b></i></div>
+        <div class="mt"><span>CROSSHEAD</span><i><b id="mtrav"></b></i></div>
+      </div>
+
+      <div class="lab" id="labA">Without Therpol<small>Fractured</small></div>
+      <div class="lab a" id="labB">With Therpol<small>Still drawing</small></div>
+
+      <div class="rail" id="rail">
+        <div><i><b></b></i><em>01</em>The problem</div>
+        <div><i><b></b></i><em>02</em>The mix</div>
+        <div><i><b></b></i><em>03</em>With Therpol</div>
+        <div><i><b></b></i><em>04</em>The difference</div>
+        <div><i><b></b></i><em>05</em>Next step</div>
+      </div>
+      <div class="disc"><span class="dl">Concept prototype by Element8. Real-time simulation with illustrative curve shapes, not Therpol test data. Placeholder wordmark.</span><span class="ds">Concept · simulation</span></div>
+    </div>
+
+    <div class="routes gut" id="routes">
+      <div class="wrap">
+        <div class="eye">05 · Next step</div>
+        <h2>Choose your route.</h2>
+        <div class="cards">
+          <div class="card"><small>COMPOUNDERS &amp; CONVERTERS</small><h3>Test it in your line</h3><p>Data sheet by polymer and process, then a sample.</p><button class="btn f cta" type="button">Request a sample</button></div>
+          <div class="card"><small>RECYCLERS</small><h3>Run a trial</h3><p>Bring a mixed or hard-to-recycle stream and run it with the Therpol team.</p><button class="btn cta" type="button">Book a trial</button></div>
+          <div class="card"><small>BRAND OWNERS &amp; PARTNERS</small><h3>Partner with Therpol</h3><p>Licensing and distribution in RAI's territories, and recycled-content programmes.</p><button class="btn cta" type="button">Talk to us</button></div>
+        </div>
+        <div class="done" id="done" aria-live="polite"></div>
+        <button class="back" id="back" type="button">↑ RUN THE TEST AGAIN</button>
+      </div>
+    </div>
+
+    <div class="sticky"><button class="btn f cta" type="button">Request a sample</button><button class="btn cta" type="button">Data sheet</button></div>
+  </div>
+</div>
+
+<noscript><p style="position:fixed;left:16px;bottom:16px;font:14px/1.4 sans-serif;color:#eef0f2">This page runs a live test simulation and needs JavaScript.</p></noscript>
+<script src="js/vendor/three.min.js"></script>
+<script src="js/therpol.js"></script>
+</body>
+</html>
